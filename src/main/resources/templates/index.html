@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Image Comparator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="relative min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center">
+    <div class="w-full p-10 bg-white rounded-xl z-10">
+        <div class="text-center">
+            <h2 class="mt-5 text-3xl font-bold text-gray-900">
+                Let's compare 2 images.
+            </h2>
+            <p class="mt-2 text-sm text-gray-400">Please upload the two images with same dimensions.</p>
+
+            <form class="mt-8 space-y-3" method="post" th:action="@{/upload}" enctype="multipart/form-data">
+                <div class="grid grid-cols-1 space-y-2">
+                    <label class="text-sm font-bold text-gray-500 tracking-wide">Attach First Image</label>
+                    <div class=" flex items-center justify-center w-full">
+                        <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
+                            <div class="h-full w-full text-center flex flex-col items-center justify-center items-center"
+                                 id="image1prompt">
+                                <p class="pointer-none text-gray-500 "><span class="text-sm">Drag and drop</span> files
+                                    here
+                                    <br/> or <a href="" class="text-blue-600 hover:underline">select a file</a>
+                                    from
+                                    your
+                                    computer</p>
+                            </div>
+                            <input type="file" name="image1" id="image1" class="file-area hidden">
+                        </label>
+
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 space-y-2">
+                    <label class="text-sm font-bold text-gray-500 tracking-wide">Attach Second Image</label>
+                    <div class="flex items-center justify-center w-full">
+                        <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
+                            <div class="h-full w-full text-center flex flex-col items-center justify-center items-center"
+                                 id="image2prompt">
+                                <p class="pointer-none text-gray-500"><span class="text-sm">Drag and drop</span> files
+                                    here
+                                    <br/> or <a href="" class="text-blue-600 hover:underline">select a file</a>
+                                    from
+                                    your
+                                    computer</p>
+                            </div>
+                            <input type="file" name="image2" id="image2" class="file-area hidden">
+                        </label>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-300">
+                    <span>File type: jpg, jpeg, png and other types of images</span>
+                </p>
+                <div>
+                    <button type="submit" class="my-5 w-full flex justify-center bg-blue-500 text-gray-100 p-4  rounded-full tracking-wide
+                                    font-semibold  focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300">
+                        Upload
+                    </button>
+                </div>
+                <div th:if="${message ne null or base64Image ne null}">
+                    <a href="/" class="my-5 w-full flex justify-center bg-green-700 text-gray-100 p-4 rounded-full tracking-wide
+                       font-semibold focus:outline-none focus:shadow-outline hover:bg-green-600 shadow-lg cursor-pointer transition ease-in duration-300">Reset</a>
+                </div>
+            </form>
+            <div class="flex items-center justify-center">
+                <p th:text="${message}" th:if="${message ne null}" class="text-red-600"></p>
+                <img th:if="${base64Image ne null}" th:src="'data:image/jpeg;base64,' + ${base64Image}" alt="Image"/>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const innerBlockHTML = `<p className="pointer-none text-gray-500"><span
+        className="text-sm">Drag and drop</span> files
+        here
+        <br/> or <a href="" className="text-blue-600 hover:underline">select a file</a>
+        from
+        your
+        computer</p>`
+    // JavaScript to handle file selection event
+    const fileAreas = document.querySelectorAll(".file-area");
+    fileAreas.forEach(el => el.addEventListener('change', function (event) {
+        // event.stopPropagation();
+        const numOfInput = event.target.id.slice(-1);
+        const fileInput = document.getElementById(`image${numOfInput}`);
+        const innerBlock = document.getElementById(`image${numOfInput}prompt`);
+
+        if (fileInput.files.length > 0) {
+            innerBlock.innerHTML =  fileInput.files[0].name;
+        }
+    }));
+</script>
+</body>
+</html>
