@@ -20,7 +20,7 @@ public class HomeController {
     private final ImageCompareService imageCompareService;
 
     @Autowired
-    HomeController(FileService fileService, ImageCompareService imageCompareService) {
+    public HomeController(FileService fileService, ImageCompareService imageCompareService) {
         this.fileService = fileService;
         this.imageCompareService = imageCompareService;
     }

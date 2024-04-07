@@ -34,13 +34,6 @@ public class FileService {
         }
     }
 
-//    public File convertMultipartfileToFile(MultipartFile multipartFile) throws IOException {
-//        File file = new File(StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename())));
-//
-//        multipartFile.transferTo(file);
-//        return file;
-//    }
-
     public String convertImageToBase64(BufferedImage bufferedImage) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ImageIO.write(bufferedImage, "png", byteArrayOutputStream);

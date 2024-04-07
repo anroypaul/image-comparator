@@ -1,4 +1,4 @@
-# java-image-comparator
+# image-comparator
 
 ### Description
 
@@ -6,7 +6,8 @@ This tool compares two images, highlights the differences and generates the new 
 Images should be same dimensions. The comparison process is performed by using all Java built-in features and libraries.
 
 **How to run:**
-```TODO...```
+1. ```docker build --tag=image-comparator:latest .```
+2. ```docker run -p8887:8080 image-comparator:latest```
 
 **How to deploy:**
 ```TODO...```
@@ -17,8 +18,8 @@ Images should be same dimensions. The comparison process is performed by using a
 - [x] Display result image 
 - [x] Add 'clear/reset' button that removes all images from memory and refreshes the page
 - [x] File upload logic
+- [x] Docker support
 - [ ] Check/restrict file extensions to upload
-- [ ] Docker support 
 - [ ] Deploy it 
 
 ### Technologies used:
@@ -26,3 +27,4 @@ Images should be same dimensions. The comparison process is performed by using a
 - Spring Boot
 - Thymeleaf
 - TailwindCSS
+- Docker

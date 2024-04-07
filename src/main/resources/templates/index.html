@@ -20,12 +20,9 @@
                         <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
                             <div class="h-full w-full text-center flex flex-col items-center justify-center items-center"
                                  id="image1prompt">
-                                <p class="pointer-none text-gray-500 "><span class="text-sm">Drag and drop</span> files
-                                    here
-                                    <br/> or <a href="" class="text-blue-600 hover:underline">select a file</a>
-                                    from
-                                    your
-                                    computer</p>
+                                <p class="pointer-none text-gray-500 ">Click here to
+                                    <a href="" class="text-blue-600 hover:underline">select a file</a>
+                                    from your computer</p>
                             </div>
                             <input type="file" name="image1" id="image1" class="file-area hidden">
                         </label>
@@ -38,12 +35,9 @@
                         <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
                             <div class="h-full w-full text-center flex flex-col items-center justify-center items-center"
                                  id="image2prompt">
-                                <p class="pointer-none text-gray-500"><span class="text-sm">Drag and drop</span> files
-                                    here
-                                    <br/> or <a href="" class="text-blue-600 hover:underline">select a file</a>
-                                    from
-                                    your
-                                    computer</p>
+                                <p class="pointer-none text-gray-500 ">Click here to
+                                    <a href="" class="text-blue-600 hover:underline">select a file</a>
+                                    from your computer</p>
                             </div>
                             <input type="file" name="image2" id="image2" class="file-area hidden">
                         </label>
@@ -71,13 +65,9 @@
     </div>
 </div>
 <script>
-    const innerBlockHTML = `<p className="pointer-none text-gray-500"><span
-        className="text-sm">Drag and drop</span> files
-        here
-        <br/> or <a href="" className="text-blue-600 hover:underline">select a file</a>
-        from
-        your
-        computer</p>`
+    const innerBlockHTML = `<p class="pointer-none text-gray-500">Click here
+        to <a href="" class="text-blue-600 hover:underline">select a file</a>
+        from your computer</p>`
     // JavaScript to handle file selection event
     const fileAreas = document.querySelectorAll(".file-area");
     fileAreas.forEach(el => el.addEventListener('change', function (event) {

@@ -3,8 +3,8 @@ package com.anroypaul.imagecomparator;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
-//import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -55,8 +55,6 @@ public class ImageCompareService {
 
             }
 
-            // displayImage(diffImage, "Compared Image");
-
             return diffImage;
         } catch (IOException e) {
             e.printStackTrace();
@@ -68,14 +66,6 @@ public class ImageCompareService {
         g.setColor(Color.RED);
         g.drawRect(x, y, width, height);
     }
-
-    /*private static void displayImage(BufferedImage image, String title) {
-        JFrame frame = new JFrame(title);
-        frame.getContentPane().add(new JLabel(new ImageIcon(image)));
-        frame.pack();
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }*/
 
     private ArrayList<LinkedList<int[]>> findConsecutiveNumbers(ArrayList<int[]> pairs) {
         ArrayList<LinkedList<int[]>> consecutiveNumbers = new ArrayList<>();
