@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Image Comparator</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,7 +13,7 @@
             </h2>
             <p class="mt-2 text-sm text-gray-400">Please upload the two images with same dimensions.</p>
 
-            <form class="mt-8 space-y-3" method="post" th:action="@{/upload}" enctype="multipart/form-data">
+            <form class="mt-8 space-y-3" method="post" th:action="@{/upload}" th:object="${imageForm}" enctype="multipart/form-data">
                 <div class="grid grid-cols-1 space-y-2">
                     <label class="text-sm font-bold text-gray-500 tracking-wide">Attach First Image</label>
                     <div class=" flex items-center justify-center w-full">
@@ -24,7 +24,7 @@
                                     <a href="" class="text-blue-600 hover:underline">select a file</a>
                                     from your computer</p>
                             </div>
-                            <input type="file" name="image1" id="image1" class="file-area hidden">
+                            <input type="file" name="firstImage" id="image1" class="file-area hidden" accept="image/*">
                         </label>
 
                     </div>
@@ -39,7 +39,7 @@
                                     <a href="" class="text-blue-600 hover:underline">select a file</a>
                                     from your computer</p>
                             </div>
-                            <input type="file" name="image2" id="image2" class="file-area hidden">
+                            <input type="file" name="secondImage" id="image2" class="file-area hidden" accept="image/*">
                         </label>
                     </div>
                 </div>
@@ -58,8 +58,13 @@
                 </div>
             </form>
             <div class="flex items-center justify-center">
-                <p th:text="${message}" th:if="${message ne null}" class="text-red-600"></p>
+                <p th:text="${message}" th:if="${message ne null}" class="text-green-600"></p>
                 <img th:if="${base64Image ne null}" th:src="'data:image/jpeg;base64,' + ${base64Image}" alt="Image"/>
+                <div th:if="${errors}">
+                    <ul>
+                        <li th:each="error : ${errors}" th:text="${error}" class="text-red-600"></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
