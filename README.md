@@ -19,7 +19,7 @@ Images should be same dimensions. The comparison process is performed by using a
 - [x] Add 'clear/reset' button that removes all images from memory and refreshes the page
 - [x] File upload logic
 - [x] Docker support
-- [ ] Check/restrict file extensions to upload
+- [x] Check/restrict file extensions to upload
 - [ ] Deploy it 
 
 ### Technologies used:
